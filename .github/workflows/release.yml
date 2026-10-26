@@ -43,7 +43,6 @@ jobs:
           git archive HEAD MerfinUI MerfinPlus | tar -x -C release
           cd release
           zip -r ../MerfinUI-v${{ env.VERSION }}.zip MerfinUI MerfinPlus
-          cp ../MerfinUI-v${{ env.VERSION }}.zip ../MerfinUI-latest.zip
           cd ..
 
       - name: Create Release
@@ -54,5 +53,4 @@ jobs:
           name: "Release v${{ env.VERSION }}"
           files: |
             MerfinUI-v${{ env.VERSION }}.zip
-            MerfinUI-latest.zip
           generate_release_notes: true
