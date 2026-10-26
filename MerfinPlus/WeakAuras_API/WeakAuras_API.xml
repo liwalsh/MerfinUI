@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file='Helpful.lua'/>
+	<Script file='MerfinConfigBridge.lua'/>
+	<Script file='AuctionHouseHelper.lua'/>
+	<Script file='SpecHelper.lua'/>
+</Ui>

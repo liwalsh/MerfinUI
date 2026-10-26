@@ -1,0 +1,39 @@
+## Interface: 30300
+## Title: |cff4beb2cMerfinUI|r Wrath of the Lichking
+## Author: Merfin
+## Version: 7.78.01
+## X-Website: discord.gg/merfin
+## X-Flavor: Wrath
+## Notes: Contains User Interface layouts from Merfin
+## Notes-ruRU: Содержит макеты пользовательского интерфейса от Merfin
+## Category: User Interface
+## Category-ruRU: Интерфейс пользователя
+## IconTexture: Interface\AddOns\MerfinUI\Media\Icons\logo_wotlk
+## OptionalDeps: MerfinPlus
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## Dependencies: ElvUI
+## AllowLoadGameType: wrath
+
+Libs\libsLoad.xml
+Locales\enUS.lua
+Locales\ruRU.lua
+MerfinUI.lua
+Defaults.lua
+Functions.lua
+AceGUIWidgets\Spacer.lua
+AceGUIWidgets\Links.lua
+OptionsTable.lua
+Profiles\System\Chat.lua
+Profiles\System\CVar.lua
+Installer\Installer_Wrath.lua
+Profiles\ElvUI\AddOnSkins.lua
+Profiles\ElvUI\global.lua
+Profiles\ElvUI\private.lua
+Profiles\ElvUI\Nameplates.lua
+Profiles\ElvUI\ElvUI.lua
+Profiles\AddOns\RaidFrames.lua
+Profiles\AddOns\DBM.lua
+Profiles\AddOns\Skada.lua
+Profiles\AddOns\Details.lua
+Profiles\AddOns\xCT.lua
