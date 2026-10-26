@@ -1,0 +1,58 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'MerfinUI/MerfinUI.toc'
+      - 'MerfinPlus/MerfinPlus.toc'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract Version
+        id: get_version
+        run: |
+          VERSION=$(grep -i "^## Version:" MerfinUI/MerfinUI.toc | sed 's/.*: *//' | tr -d '\r' | xargs | sed 's/^[vV]//')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Found version: $VERSION"
+
+      - name: Check if tag already exists
+        id: check_tag
+        run: |
+          if git ls-remote --tags origin | grep -q "refs/tags/v${{ env.VERSION }}$"; then
+            echo "Tag v${{ env.VERSION }} already exists."
+            echo "EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "Tag v${{ env.VERSION }} does not exist."
+            echo "EXISTS=false" >> $GITHUB_ENV
+          fi
+
+      - name: Create Archive
+        if: env.EXISTS == 'false'
+        run: |
+          mkdir -p release
+          git archive HEAD MerfinUI MerfinPlus | tar -x -C release
+          cd release
+          zip -r ../MerfinUI-v${{ env.VERSION }}.zip MerfinUI MerfinPlus
+          cp ../MerfinUI-v${{ env.VERSION }}.zip ../MerfinUI-latest.zip
+          cd ..
+
+      - name: Create Release
+        if: env.EXISTS == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ env.VERSION }}"
+          name: "Release v${{ env.VERSION }}"
+          files: |
+            MerfinUI-v${{ env.VERSION }}.zip
+            MerfinUI-latest.zip
+          generate_release_notes: true
