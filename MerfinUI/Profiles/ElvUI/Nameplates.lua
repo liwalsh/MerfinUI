@@ -177,16 +177,6 @@ function Private.ApplyNameplateStyleClassic()
 		raidTargetIndicator.xOffset = 0
 		raidTargetIndicator.yOffset = 0
 
-		local targetText = E.db.nameplates.units[nameplateType].targetText
-		targetText.enable = false
-		targetText.position = 'RIGHT'
-		targetText.justifyH = 'RIGHT'
-		targetText.xOffset = 0
-		targetText.yOffset = -9
-		targetText.font = Private.GetProfileFont()
-		targetText.fontSize = 9
-		targetText.fontOutline = 'OUTLINE'
-
 		if enemies[nameplateType] then
 			health.text.format = 'CURRENT_PERCENT'
 			health.text.parent = 'Health'
@@ -195,6 +185,22 @@ function Private.ApplyNameplateStyleClassic()
 		if friendlies[nameplateType] then
 			health.enable = false
 		end
+
+		for nameplateType in pairs(enemies) do
+		E.db.nameplates.units[nameplateType].customTexts.NPTarget = {
+			enable = true,
+			text_format = '[target:abbrev]',
+			font = Private.GetProfileFont(),
+			fontSize = 9,
+			fontOutline = 'OUTLINE',
+			attachTextTo = 'Health',
+			position = 'RIGHT',
+			justifyH = 'RIGHT',
+			xOffset = 0,
+			yOffset = -9,
+			layer = 'OVERLAY',
+		}
+	end
 	end
 end
 
@@ -356,16 +362,6 @@ function Private.ApplyNameplateStyleModern()
 		raidTargetIndicator.xOffset = -10
 		raidTargetIndicator.yOffset = 10
 
-		local targetText = E.db.nameplates.units[nameplateType].targetText
-		targetText.enable = false
-		targetText.position = 'CENTER'
-		targetText.justifyH = 'CENTER'
-		targetText.xOffset = 0
-		targetText.yOffset = -9
-		targetText.font = Private.GetProfileFont()
-		targetText.fontSize = 9
-		targetText.fontOutline = 'OUTLINE'
-
 		if enemies[nameplateType] then
 			health.text.format = 'CURRENT_PERCENT'
 			health.text.parent = 'Health'
@@ -374,6 +370,22 @@ function Private.ApplyNameplateStyleModern()
 		if friendlies[nameplateType] then
 			health.enable = false
 		end
+
+		for nameplateType in pairs(enemies) do
+		E.db.nameplates.units[nameplateType].customTexts.NPTarget = {
+			enable = true,
+			text_format = '[target:abbrev]',
+			font = Private.GetProfileFont(),
+			fontSize = 9,
+			fontOutline = 'OUTLINE',
+			attachTextTo = 'Health',
+			position = 'CENTER',
+			justifyH = 'CENTER',
+			xOffset = 0,
+			yOffset = -9,
+			layer = 'OVERLAY',
+		}
+	end
 	end
 end
 
