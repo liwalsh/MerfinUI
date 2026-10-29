@@ -1,7 +1,7 @@
 ## Interface: 30300
 ## Title: |cff4beb2cMerfinUI|r Wrath of the Lichking
 ## Author: Merfin
-## Version: 7.78.04
+## Version: 7.78.05
 ## X-Website: discord.gg/merfin
 ## X-Flavor: Wrath
 ## Notes: Contains User Interface layouts from Merfin
