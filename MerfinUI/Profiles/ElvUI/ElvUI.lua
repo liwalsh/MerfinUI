@@ -260,6 +260,35 @@ db.general = function()
 	E.db.general.afk = false
 	E.db.general.autoAcceptInvite = false
 	E.db.general.autoRepair = 'PLAYER'
+
+	E.db.general.characterInfo = E.db.general.characterInfo or {}
+	E.db.general.characterInfo.highlightBlackDiamonds = true
+	E.db.general.characterInfo.showGems = true
+	E.db.general.characterInfo.showEnchants = false
+	E.db.general.characterInfo.socketSize = 15
+	E.db.general.characterInfo.socketPosition = 'default'
+	E.db.general.characterInfo.socketXOffset = 0
+	E.db.general.characterInfo.socketYOffset = 0
+	E.db.general.characterInfo.enchantPosition = 'default'
+	E.db.general.characterInfo.enchantXOffset = 0
+	E.db.general.characterInfo.enchantYOffset = 0
+	E.db.general.characterInfo.enchantFont = Private.GetProfileFont()
+	E.db.general.characterInfo.enchantFontSize = 11
+	E.db.general.characterInfo.enchantFontOutline = 'OUTLINE'
+	E.db.general.characterInfo.showItemLevel = true
+	E.db.general.characterInfo.itemLevelQualityColor = true
+	E.db.general.characterInfo.itemLevelPosition = 'BOTTOMLEFT'
+	E.db.general.characterInfo.itemLevelXOffset = 0
+	E.db.general.characterInfo.itemLevelYOffset = 2
+	E.db.general.characterInfo.showDurability = true
+	E.db.general.characterInfo.durabilityOnlyDamaged = false
+	E.db.general.characterInfo.durabilityPosition = 'TOPLEFT'
+	E.db.general.characterInfo.durabilityXOffset = 0
+	E.db.general.characterInfo.durabilityYOffset = 0
+	E.db.general.characterInfo.font = Private.GetProfileFont()
+	E.db.general.characterInfo.fontSize = 11
+	E.db.general.characterInfo.fontOutline = 'OUTLINE'
+
 	E.db.general.bottomPanel = false
 	E.db.general.font = Private.GetProfileFont()
 
