@@ -140,15 +140,14 @@ function Private.OptionsTable()
 	)
 	Private.Options.args.installPadding = Private.AceGUISpacer(3, 0)
 
-	-- Installation Settings
-	Private.Options.args.settings = ACH:Group(L['Installation Settings'], nil, 4, nil, function(info)
+	-- General
+	Private.Options.args.settings = ACH:Group(L['General'], nil, 4, nil, function(info)
 		return E.private.MUI.general.profileSettings[info[#info]]
 	end, function(info, value)
 		E.private.MUI.general.profileSettings[info[#info]] = value
 	end)
 	local settings = Private.Options.args.settings.args
-	settings.header = ACH:Header(L['Installation Settings'], 1)
-	settings.media = ACH:Group('', nil, 2, nil, function(info)
+	settings.media = ACH:Group('', nil, 1, nil, function(info)
 		return E.private.MUI.general.profileSettings.media[info[#info]]
 	end, function(info, value)
 		E.private.MUI.general.profileSettings.media[info[#info]] = value
@@ -166,124 +165,17 @@ function Private.OptionsTable()
 	settings.gameMenu.inline = true
 	settings.gameMenu.args.show =
 		ACH:Toggle(L['Show MerfinUI Button'], L['Shows the MerfinUI button in the Game Menu.'], 1)
-	settings.actionbars = ACH:Group(L['Action Bars'], nil, 4, nil, function(info)
-		return E.private.MUI.general.profileSettings.actionbars[info[#info]]
-	end, function(info, value)
-		E.private.MUI.general.profileSettings.actionbars[info[#info]] = value
-		Private.ActionBarsSettings()
+	settings.layout = ACH:Group(L['Color Theme'], nil, 4)
+	settings.layout.inline = true
+	settings.layout.args.setNormalTheme = ACH:Execute(L['Class Theme'], nil, 1, function()
+		Private.ChangeTheme('Normal')
+		E:StaticPopup_Show('MUI_RELOAD')
 	end)
-
-	settings.actionbars.inline = true
-	settings.actionbars.args.desc =
-		ACH:Description(L['Set your action bars to always show or appear on mouseover.'], 1, 'medium')
-	settings.actionbars.args.showAlways = ACH:Execute(L['Show Always'], nil, 2, function()
-		Private.ActionBarsVisibility(true)
+	settings.layout.args.setDarkTheme = ACH:Execute(L['Dark Theme'], nil, 2, function()
+		Private.ChangeTheme('Dark')
+		E:StaticPopup_Show('MUI_RELOAD')
 	end)
-	settings.actionbars.args.showMouseover = ACH:Execute(L['Show Mouseover'], nil, 3, function()
-		Private.ActionBarsVisibility(false)
-	end)
-	settings.actionbars.args.showGrid = ACH:Toggle(L['Show Grid'], L['Show Empty cells'], 4)
-	settings.Portrait = ACH:Group(L['Portraits'], nil, 5, nil, function(info)
-		return E.private.MUI.general.profileSettings.Portrait[info[#info]]
-	end, function(info, value)
-		E.private.MUI.general.profileSettings.Portrait[info[#info]] = value
-		Private.UnitFramesSettings()
-	end)
-	settings.Portrait.inline = true
-	settings.Portrait.args.playerPortrait =
-		ACH:Toggle(L['Player Portrait'], L['Show the Player Portrait provided by ElvUI.'], 1)
-	settings.Portrait.args.targetPortrait =
-		ACH:Toggle(L['Target Portrait'], L['Show the Target Portrait provided by ElvUI.'], 2)
-	settings.Pets = ACH:Group(L['Pets'], nil, 6, nil, function(info)
-		return E.private.MUI.general.profileSettings.Pets[info[#info]]
-	end, function(info, value)
-		E.private.MUI.general.profileSettings.Pets[info[#info]] = value
-		Private.UnitFramesSettings()
-	end)
-	settings.Pets.inline = true
-	settings.Pets.args.partyPets =
-		ACH:Toggle(L['Party Pets'], L['Show the Party Pets provided by ElvUI.'], 1)
-	settings.Pets.args.raidPets =
-		ACH:Toggle(L['Raid Pets'], L['Show the Raid Pets provided by ElvUI.'], 2)
-	settings.CastBar = ACH:Group(L['Cast Bars'], nil, 7, nil, function(info)
-		return E.private.MUI.general.profileSettings.CastBar[info[#info]]
-	end, function(info, value)
-		E.private.MUI.general.profileSettings.CastBar[info[#info]] = value
-		Private.UnitFramesSettings()
-	end)
-	settings.CastBar.inline = true
-	settings.CastBar.args.playerCastBar =
-		ACH:Toggle(L['Player Castbar'], L['Show the Player Cast Bar provided by ElvUI.'], 1)
-	settings.CastBar.args.petCastBar =
-		ACH:Toggle(L['Pet Castbar'], L['Show the Pet Cast Bar provided by ElvUI.'], 2)
-	settings.CastBar.args.targetCastBar =
-		ACH:Toggle(L['Target Castbar'], L['Show the Target Cast Bar provided by ElvUI.'], 3)
-	settings.CastBar.args.focusCastBar =
-		ACH:Toggle(L['Focus Castbar'], L['Show the Focus Cast Bar provided by ElvUI.'], 4)
-	settings.unitFrames = ACH:Group(L['Unit Frames'], nil, 8)
-	settings.unitFrames.inline = true
-	settings.unitFrames.args.old = ACH:Execute(L['Classic'], L['Enable the classic unit frames text style.'], 1, function()
-		local customTexts = E.db.unitframe.units.player.customTexts
-		customTexts.UnitHealth.enable = true
-		customTexts.UnitHealthNew.enable = false
-		customTexts.UnitName.enable = false
-		customTexts.UnitPower.enable = false
-		E:UpdateAll(true)
-	end)
-	settings.unitFrames.args.new = ACH:Execute(L['Modern'], L['Enable the modern unit frames text style.'], 2, function()
-		local customTexts = E.db.unitframe.units.player.customTexts
-		customTexts.UnitHealthNew.enable = true
-		customTexts.UnitName.enable = true
-		customTexts.UnitPower.enable = true
-		customTexts.UnitHealth.enable = false
-		E:UpdateAll(true)
-	end)
-	settings.unitFrames.args.powerBar = ACH:Toggle(
-		L['Show Resource Bar'],
-		L['Show the player resource (power) bar.'],
-		3,
-		nil,
-		nil,
-		nil,
-		function()
-			return E.db.unitframe.units.player.power.enable
-		end,
-		function(_, value)
-			E.db.unitframe.units.player.power.enable = value
-			E:UpdateAll(true)
-		end
-	)
-	settings.nameplates = ACH:Group(L['Nameplates'], nil, 9, nil, function(info)
-		return E.private.MUI.general.profileSettings.nameplates[info[#info]]
-	end, function(info, value)
-		E.private.MUI.general.profileSettings.nameplates[info[#info]] = value
-		Private.ApplyNameplateStyle()
-	end)
-	settings.nameplates.inline = true
-	settings.nameplates.args.desc = ACH:Description(
-		L['Choose the design of the nameplates above the heads of units.'],
-		1,
-		'medium'
-	)
-	settings.nameplates.args.classic = ACH:Execute(
-		L['Classic'],
-		L['Choose the design of the nameplates above the heads of units. Classic: text above the health bar, side auras (default look).'],
-		2,
-		function()
-			E.private.MUI.general.profileSettings.nameplates.style = 'Classic'
-			Private.ApplyNameplateStyle()
-		end
-	)
-	settings.nameplates.args.modern = ACH:Execute(
-		L['Modern'],
-		L['Choose the design of the nameplates above the heads of units. Modern: compact bar, text inside the health bar, buffs below and debuffs above.'],
-		3,
-		function()
-			E.private.MUI.general.profileSettings.nameplates.style = 'Modern'
-			Private.ApplyNameplateStyle()
-		end
-	)
-	settings.blacklist = ACH:Group(L['Ignore Modules'], nil, 10, nil, function(info)
+	settings.blacklist = ACH:Group(L['Ignore Modules'], nil, 9, nil, function(info)
 		return E.private.MUI.general.profileSettings.blacklist[info[#info]]
 	end, function(info, value)
 		E.private.MUI.general.profileSettings.blacklist[info[#info]] = value
@@ -291,7 +183,7 @@ function Private.OptionsTable()
 	settings.blacklist.inline = true
 	settings.blacklist.args.movers = ACH:Toggle(L['Movers'], L['Movers'], 1)
 	settings.blacklist.args.actionBars = ACH:Toggle(L['Action Bars'], L['Action Bars'], 2)
-	settings.easyDelete = ACH:Group(L['Easy Delete'], nil, 11)
+	settings.easyDelete = ACH:Group(L['Easy Delete'], nil, 10)
 	settings.easyDelete.inline = true
 	settings.easyDelete.args.enable = ACH:Toggle(
 		L['Easy Delete'],
@@ -310,7 +202,7 @@ function Private.OptionsTable()
 	settings.setDefaults = ACH:Execute(
 		L['Reset to Defaults'],
 		L['Set Default MerfinUI settings'],
-		12,
+		11,
 		function()
 			Private.SetDefaults()
 		end
@@ -318,57 +210,140 @@ function Private.OptionsTable()
 	settings.setActualVersion = ACH:Execute(
 		L['Set Actual Version'],
 		L['Actualize Profile Version'],
-		13,
+		12,
 		function()
 			Private.SetActualVersion()
 		end
 	)
 
-	-- Layout Settings
-	Private.Options.args.layout = ACH:Group(L['Color Theme'], nil, 5)
-	Private.Options.args.layout.args.header = ACH:Header(L['Color Theme'], 1)
-	Private.Options.args.layout.args.desc = ACH:Description(
-		L['Click on the button below to set color theme of ElvUI unit frames.\n- Normal Theme would enable class colorized frames;\n- Dark Theme would darken them and put Unit Names texts class colorized'],
-		2
+	-- Nameplates (Health Indicators)
+	Private.Options.args.nameplates = ACH:Group(L['Nameplates'], nil, 5)
+	Private.Options.args.nameplates.args.content = ACH:Group(L['Nameplates'], nil, 1, nil, function(info)
+		return E.private.MUI.general.profileSettings.nameplates[info[#info]]
+	end, function(info, value)
+		E.private.MUI.general.profileSettings.nameplates[info[#info]] = value
+		Private.ApplyNameplateStyle()
+	end)
+	Private.Options.args.nameplates.args.content.inline = true
+	Private.Options.args.nameplates.args.content.args.desc = ACH:Description(
+		L['Choose the design of the nameplates above the heads of units.'],
+		1,
+		'medium'
 	)
-	Private.Options.args.layout.args.spacer1 = ACH:Spacer(3, 'full')
-	Private.Options.args.layout.args.darkColor = ACH:Color(L['Main'], nil, 4, true, nil, function()
-		local c = E.private.MUI.general.layout.dark.color
-		return c.r, c.g, c.b, c.a
-	end, function(_, r, g, b, a)
-		local c = E.private.MUI.general.layout.dark.color
-		c.r, c.g, c.b, c.a = r, g, b, a
+	Private.Options.args.nameplates.args.content.args.classic = ACH:Execute(
+		L['Classic'],
+		L['Choose the design of the nameplates above the heads of units. Classic: text above the health bar, side auras (default look).'],
+		2,
+		function()
+			E.private.MUI.general.profileSettings.nameplates.style = 'Classic'
+			Private.ApplyNameplateStyle()
+		end
+	)
+	Private.Options.args.nameplates.args.content.args.modern = ACH:Execute(
+		L['Modern'],
+		L['Choose the design of the nameplates above the heads of units. Modern: compact bar, text inside the health bar, buffs below and debuffs above.'],
+		3,
+		function()
+			E.private.MUI.general.profileSettings.nameplates.style = 'Modern'
+			Private.ApplyNameplateStyle()
+		end
+	)
+
+	-- Action Bars (Command Panels)
+	Private.Options.args.actionbars = ACH:Group(L['Action Bars'], nil, 6)
+	Private.Options.args.actionbars.args.content = ACH:Group(L['Action Bars'], nil, 1, nil, function(info)
+		return E.private.MUI.general.profileSettings.actionbars[info[#info]]
+	end, function(info, value)
+		E.private.MUI.general.profileSettings.actionbars[info[#info]] = value
+		Private.ActionBarsSettings()
 	end)
-	Private.Options.args.layout.args.darkColorBackdrop = ACH:Color(L['Backdrop'], nil, 5, true, nil, function()
-		local c = E.private.MUI.general.layout.dark.backdrop
-		return c.r, c.g, c.b, c.a
-	end, function(_, r, g, b, a)
-		local c = E.private.MUI.general.layout.dark.backdrop
-		c.r, c.g, c.b, c.a = r, g, b, a
+	Private.Options.args.actionbars.args.content.inline = true
+	Private.Options.args.actionbars.args.content.args.desc =
+		ACH:Description(L['Set your action bars to always show or appear on mouseover.'], 1, 'medium')
+	Private.Options.args.actionbars.args.content.args.showAlways = ACH:Execute(L['Show Always'], nil, 2, function()
+		Private.ActionBarsVisibility(true)
 	end)
-	Private.Options.args.layout.args.darkColorDeadge = ACH:Color(L['Dead'], nil, 6, true, nil, function()
-		local c = E.private.MUI.general.layout.dark.dead
-		return c.r, c.g, c.b, c.a
-	end, function(_, r, g, b, a)
-		local c = E.private.MUI.general.layout.dark.dead
-		c.r, c.g, c.b, c.a = r, g, b, a
+	Private.Options.args.actionbars.args.content.args.showMouseover = ACH:Execute(L['Show Mouseover'], nil, 3, function()
+		Private.ActionBarsVisibility(false)
 	end)
-	Private.Options.args.layout.args.spacer2 = ACH:Spacer(7, 'full')
-	Private.Options.args.layout.args.setNormalTheme = ACH:Execute(L['Class Theme'], nil, 8, function()
-		Private.ChangeTheme('Normal')
-		E:StaticPopup_Show('MUI_RELOAD')
+	Private.Options.args.actionbars.args.content.args.showGrid = ACH:Toggle(L['Show Grid'], L['Show Empty cells'], 4)
+
+	-- Unit Frames
+	Private.Options.args.unitFrames = ACH:Group(L['Unit Frames'], nil, 7)
+	local unitFrames = Private.Options.args.unitFrames.args
+	unitFrames.unitFrames = ACH:Group(L['Unit Frames'], nil, 1)
+	unitFrames.unitFrames.inline = true
+	unitFrames.unitFrames.args.old = ACH:Execute(L['Classic'], L['Enable the classic unit frames text style.'], 1, function()
+		local customTexts = E.db.unitframe.units.player.customTexts
+		customTexts.UnitHealth.enable = true
+		customTexts.UnitHealthNew.enable = false
+		customTexts.UnitName.enable = false
+		customTexts.UnitPower.enable = false
+		E:UpdateAll(true)
 	end)
-	Private.Options.args.layout.args.setDarkTheme = ACH:Execute(L['Dark Theme'], nil, 9, function()
-		Private.ChangeTheme('Dark')
-		E:StaticPopup_Show('MUI_RELOAD')
+	unitFrames.unitFrames.args.new = ACH:Execute(L['Modern'], L['Enable the modern unit frames text style.'], 2, function()
+		local customTexts = E.db.unitframe.units.player.customTexts
+		customTexts.UnitHealthNew.enable = true
+		customTexts.UnitName.enable = true
+		customTexts.UnitPower.enable = true
+		customTexts.UnitHealth.enable = false
+		E:UpdateAll(true)
 	end)
-	Private.Options.args.layout.args.spacer3 = ACH:Spacer(10, 'full')
-	Private.Options.args.layout.args.setDefaults = ACH:Execute(L['Reset to Defaults'], L['Reset to Defaults'], 11, function()
-		Private.SetDefaultLayout()
+	unitFrames.unitFrames.args.powerBar = ACH:Toggle(
+		L['Show Resource Bar'],
+		L['Show the player resource (power) bar.'],
+		3,
+		nil,
+		nil,
+		nil,
+		function()
+			return E.db.unitframe.units.player.power.enable
+		end,
+		function(_, value)
+			E.db.unitframe.units.player.power.enable = value
+			E:UpdateAll(true)
+		end
+	)
+	unitFrames.Portrait = ACH:Group(L['Portraits'], nil, 2, nil, function(info)
+		return E.private.MUI.general.profileSettings.Portrait[info[#info]]
+	end, function(info, value)
+		E.private.MUI.general.profileSettings.Portrait[info[#info]] = value
+		Private.UnitFramesSettings()
 	end)
+	unitFrames.Portrait.inline = true
+	unitFrames.Portrait.args.playerPortrait =
+		ACH:Toggle(L['Player Portrait'], L['Show the Player Portrait provided by ElvUI.'], 1)
+	unitFrames.Portrait.args.targetPortrait =
+		ACH:Toggle(L['Target Portrait'], L['Show the Target Portrait provided by ElvUI.'], 2)
+	unitFrames.Pets = ACH:Group(L['Pets'], nil, 3, nil, function(info)
+		return E.private.MUI.general.profileSettings.Pets[info[#info]]
+	end, function(info, value)
+		E.private.MUI.general.profileSettings.Pets[info[#info]] = value
+		Private.UnitFramesSettings()
+	end)
+	unitFrames.Pets.inline = true
+	unitFrames.Pets.args.partyPets =
+		ACH:Toggle(L['Party Pets'], L['Show the Party Pets provided by ElvUI.'], 1)
+	unitFrames.Pets.args.raidPets =
+		ACH:Toggle(L['Raid Pets'], L['Show the Raid Pets provided by ElvUI.'], 2)
+	unitFrames.CastBar = ACH:Group(L['Cast Bars'], nil, 4, nil, function(info)
+		return E.private.MUI.general.profileSettings.CastBar[info[#info]]
+	end, function(info, value)
+		E.private.MUI.general.profileSettings.CastBar[info[#info]] = value
+		Private.UnitFramesSettings()
+	end)
+	unitFrames.CastBar.inline = true
+	unitFrames.CastBar.args.playerCastBar =
+		ACH:Toggle(L['Player Castbar'], L['Show the Player Cast Bar provided by ElvUI.'], 1)
+	unitFrames.CastBar.args.petCastBar =
+		ACH:Toggle(L['Pet Castbar'], L['Show the Pet Cast Bar provided by ElvUI.'], 2)
+	unitFrames.CastBar.args.targetCastBar =
+		ACH:Toggle(L['Target Castbar'], L['Show the Target Cast Bar provided by ElvUI.'], 3)
+	unitFrames.CastBar.args.focusCastBar =
+		ACH:Toggle(L['Focus Castbar'], L['Show the Focus Cast Bar provided by ElvUI.'], 4)
 
 	-- Profiles
-	Private.Options.args.profiles = ACH:Group(L['Profiles'], nil, 6)
+	Private.Options.args.profiles = ACH:Group(L['Profiles'], nil, 9)
 	local profileImports = Private.Options.args.profiles.args
 	profileImports.header = ACH:Header(L['Profiles'], 1)
 	profileImports.desc =
@@ -499,7 +474,7 @@ function Private.OptionsTable()
 	end)
 
 	-- Links
-	Private.Options.args.links = ACH:Group(L['Links'], nil, 7)
+	Private.Options.args.links = ACH:Group(L['Links'], nil, 10)
 	Private.RegisterLinksWidget(linksWidgetData)
 	Private.Options.args.links.args.content = {
 		type = 'description',
