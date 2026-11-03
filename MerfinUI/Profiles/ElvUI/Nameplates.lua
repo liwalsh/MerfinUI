@@ -189,7 +189,7 @@ function Private.ApplyNameplateStyleClassic()
 		for nameplateType in pairs(enemies) do
 		E.db.nameplates.units[nameplateType].customTexts.NPTarget = {
 			enable = true,
-			text_format = '[target:abbrev]',
+			text_format = '[classcolor:target][target:abbrev]',
 			font = Private.GetProfileFont(),
 			size = 9,
 			fontOutline = 'OUTLINE',
@@ -374,7 +374,7 @@ function Private.ApplyNameplateStyleModern()
 		for nameplateType in pairs(enemies) do
 		E.db.nameplates.units[nameplateType].customTexts.NPTarget = {
 			enable = true,
-			text_format = '[target:abbrev]',
+			text_format = '[classcolor:target][target:abbrev]',
 			font = Private.GetProfileFont(),
 			size = 9,
 			fontOutline = 'OUTLINE',
