@@ -7,6 +7,7 @@ on:
     paths:
       - 'MerfinUI/MerfinUI.toc'
       - 'MerfinPlus/MerfinPlus.toc'
+      - 'xCT+/xCT+.toc'
 
 jobs:
   release:
@@ -40,9 +41,9 @@ jobs:
         if: env.EXISTS == 'false'
         run: |
           mkdir -p release
-          git archive HEAD MerfinUI MerfinPlus | tar -x -C release
+          git archive HEAD MerfinUI MerfinPlus xCT+ | tar -x -C release
           cd release
-          zip -r ../MerfinUI-v${{ env.VERSION }}.zip MerfinUI MerfinPlus
+          zip -r ../MerfinUI-v${{ env.VERSION }}.zip MerfinUI MerfinPlus xCT+
           cd ..
 
       - name: Create Release
