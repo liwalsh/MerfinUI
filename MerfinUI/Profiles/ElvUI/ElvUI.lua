@@ -100,7 +100,6 @@ db.movers = function(layout, force)
 			E.db.movers.ElvAB_4 = 'BOTTOM,ElvUIParent,BOTTOM,-210,39'
 			E.db.movers.ElvAB_5 = 'BOTTOM,ElvUIParent,BOTTOM,210,39'
 			E.db.movers.ElvAB_6 = 'BOTTOM,ElvUIParent,BOTTOM,0,70'
-			E.db.movers.ShiftAB = 'BOTTOMRIGHT,ElvUIParent,BOTTOMRIGHT,-475,3'
 			E.db.movers.MicrobarMover = 'BOTTOMRIGHT,ElvUIParent,BOTTOMRIGHT,-257,4'
 		end
 
@@ -322,6 +321,7 @@ db.general = function()
 	E.db.general.totems.mouseover = true
 	E.db.general.totems.growthDirection = 'HORIZONTAL'
 	E.db.general.totems.spacing = 1
+	E.db.general.totems.size = 32
 
 	E.db.general.queueStatus.font = Private.GetProfileFont()
 	E.db.general.queueStatus.position = 'CENTER'
@@ -357,7 +357,6 @@ db.general = function()
 		E.db.general.minimap.locationFontSize = 14
 		E.db.general.minimap.timeFontSize = 14
 		E.db.general.totems.fontSize = 14
-		E.db.general.totems.size = 32
 		E.db.general.guildBank.countFontSize = 14
 		E.db.general.guildBank.itemLevelFontSize = 14
 		E.db.general.queueStatus.fontSize = 14
@@ -370,12 +369,10 @@ db.general = function()
 		E.db.general.minimap.locationFontSize = 13
 		E.db.general.minimap.timeFontSize = 13
 		E.db.general.totems.fontSize = 13
-		E.db.general.totems.size = 32
 		E.db.general.guildBank.countFontSize = 13
 		E.db.general.guildBank.itemLevelFontSize = 13
 		E.db.general.queueStatus.fontSize = 13
 		E.db.general.objectiveFrameHeight = 400
-		E.db.general.minimapButtonGrabber.buttonsPerRow = 12
 	end
 end
 
@@ -393,15 +390,15 @@ db.auras = function()
 
 	if Private.GetProfileResolution() == 'QUAD_HD' then
 		E.db.auras.buffs.countFontSize = 14
-		E.db.auras.buffs.horizontalSpacing = 3
+		E.db.auras.buffs.horizontalSpacing = 4
 		E.db.auras.buffs.size = 36
 		E.db.auras.buffs.timeFontSize = 14
 		E.db.auras.buffs.wrapAfter = 16
 		E.db.auras.debuffs.countFontSize = 14
-		E.db.auras.debuffs.horizontalSpacing = 3
+		E.db.auras.debuffs.horizontalSpacing = 4
 		E.db.auras.debuffs.size = 36
 		E.db.auras.debuffs.timeFontSize = 14
-		E.db.auras.debuffs.wrapAfter = 14
+		E.db.auras.debuffs.wrapAfter = 16
 	elseif Private.GetProfileResolution() == 'FULL_HD' then
 		E.db.auras.buffs.countFontSize = 13
 		E.db.auras.buffs.horizontalSpacing = 3
@@ -716,14 +713,14 @@ db.actionbars = function(force)
 	end
 
 	if Private.GetProfileResolution() == 'QUAD_HD' then
-		E.db.actionbar.fontSize = 12
+		E.db.actionbar.fontSize = 14
 		E.db.actionbar.extraActionButton.hotkeyFontSize = 14
 
 		for i = 1, 10 do
 			E.db.actionbar['bar' .. i].buttonSize = 36
 			E.db.actionbar['bar' .. i].hotkeyFontSize = 14
 			E.db.actionbar['bar' .. i].countFontSize = 14
-			E.db.actionbar['bar' .. i].macroFontSize = 13
+			E.db.actionbar['bar' .. i].macroFontSize = 14
 		end
 
 		E.db.actionbar.vehicleExitButton = E.db.actionbar.vehicleExitButton or {}
@@ -757,7 +754,7 @@ db.actionbars = function(force)
 		end
 
 		E.db.actionbar.vehicleExitButton = E.db.actionbar.vehicleExitButton or {}
-		E.db.actionbar.vehicleExitButton.buttonSize = 34
+		E.db.actionbar.vehicleExitButton.buttonSize = 32
 		E.db.actionbar.vehicleExitButton.hotkeyFontSize = 13
 		E.db.actionbar.stanceBar = E.db.actionbar.stanceBar or {}
 		E.db.actionbar.stanceBar.buttonSize = 32
@@ -1423,9 +1420,7 @@ db.unitframes = function(layout)
 		E.db.unitframe.units.player.customTexts.UnitHealth.size = 14
 		E.db.unitframe.units.player.customTexts.UnitHealthNew.size = 14
 		E.db.unitframe.units.player.customTexts.UnitHealthNew.xOffset = -3
-		E.db.unitframe.units.player.customTexts.UnitHealthNew.yOffset = 10
-		E.db.unitframe.units.player.customTexts.UnitName.xOffset = -3
-		E.db.unitframe.units.player.customTexts.UnitName.yOffset = -10
+		E.db.unitframe.units.player.customTexts.UnitHealthNew.yOffset = -10
 		E.db.unitframe.units.player.customTexts.UnitName.size = 14
 		E.db.unitframe.units.player.customTexts.UnitName.xOffset = -3
 		E.db.unitframe.units.player.customTexts.UnitName.yOffset = 10
@@ -1561,6 +1556,9 @@ db.unitframes = function(layout)
 		E.db.unitframe.units.raid40.customTexts.UnitName.size = 14
 		E.db.unitframe.units.raid40.customTexts.DeadGhostStatus.size = 13
 
+		E.db.unitframe.units.raidpet.height = 47
+		E.db.unitframe.units.raidpet.width = 84
+		
 		if layout == 'DPS/Tank' then
 
 			E.db.unitframe.units.party.height = 60
@@ -1580,7 +1578,6 @@ db.unitframes = function(layout)
 			E.db.unitframe.units.party.rdebuffs.fontSize = 13
 			E.db.unitframe.units.party.rdebuffs.yOffset = 15
 
-			E.db.unitframe.units.party.buffIndicator.countFontSize = 15
 			E.db.unitframe.units.party.petsGroup.height = 40
 			E.db.unitframe.units.party.petsGroup.width = 100
 
@@ -1592,7 +1589,7 @@ db.unitframes = function(layout)
 			E.db.unitframe.units.raid.customTexts.UnitName.yOffset = 0
 			E.db.unitframe.units.raid.readycheckIcon.size = 20
 
-			E.db.unitframe.units.raid.buffs.countFontSize = 11
+			E.db.unitframe.units.raid.buffs.countFontSize = 13
 			E.db.unitframe.units.raid.buffs.sizeOverride = 18
 			E.db.unitframe.units.raid.buffs.yOffset = 18
 
@@ -1613,7 +1610,7 @@ db.unitframes = function(layout)
 			E.db.unitframe.units.raid40.customTexts.UnitName.yOffset = 0
 			E.db.unitframe.units.raid40.readycheckIcon.size = 20
 
-			E.db.unitframe.units.raid40.buffs.countFontSize = 11
+			E.db.unitframe.units.raid40.buffs.countFontSize = 13
 			E.db.unitframe.units.raid40.buffs.sizeOverride = 18
 			E.db.unitframe.units.raid40.buffs.yOffset = 18
 
@@ -1624,9 +1621,6 @@ db.unitframes = function(layout)
 			E.db.unitframe.units.raid40.rdebuffs.size = 27
 			E.db.unitframe.units.raid40.rdebuffs.fontSize = 13
 			E.db.unitframe.units.raid40.rdebuffs.yOffset = 10
-
-			E.db.unitframe.units.raidpet.height = 45
-			E.db.unitframe.units.raidpet.width = 65
 		elseif layout == 'Healer-H' or layout == 'Healer-V' then
 			if layout == 'Healer-H' then
 				E.db.unitframe.units.party.height = 65
@@ -1646,7 +1640,6 @@ db.unitframes = function(layout)
 				E.db.unitframe.units.party.rdebuffs.fontSize = 13
 				E.db.unitframe.units.party.rdebuffs.yOffset = 19
 
-				E.db.unitframe.units.party.buffIndicator.countFontSize = 14
 				E.db.unitframe.units.party.petsGroup.height = 25
 				E.db.unitframe.units.party.petsGroup.width = 100
 				E.db.unitframe.units.party.petsGroup.anchorPoint = 'BOTTOM'
@@ -1668,7 +1661,6 @@ db.unitframes = function(layout)
 				E.db.unitframe.units.party.rdebuffs.fontSize = 13
 				E.db.unitframe.units.party.rdebuffs.yOffset = 15
 
-				E.db.unitframe.units.party.buffIndicator.countFontSize = 14
 				E.db.unitframe.units.party.petsGroup.height = 40
 				E.db.unitframe.units.party.petsGroup.width = 100
 			end
@@ -1712,9 +1704,6 @@ db.unitframes = function(layout)
 			E.db.unitframe.units.raid40.rdebuffs.size = 30
 			E.db.unitframe.units.raid40.rdebuffs.fontSize = 13
 			E.db.unitframe.units.raid40.rdebuffs.yOffset = 4
-
-			E.db.unitframe.units.raidpet.height = 47
-			E.db.unitframe.units.raidpet.width = 84
 		end
 	elseif Private.GetProfileResolution() == 'FULL_HD' then
 		E.db.unitframe.cooldown.fonts.fontSize = 20
@@ -1823,7 +1812,7 @@ db.unitframes = function(layout)
 		E.db.unitframe.units.boss.spacing = 3
 		E.db.unitframe.units.boss.debuffs.countFontSize = 13
 		E.db.unitframe.units.boss.buffs.sizeOverride = 20
-		E.db.unitframe.units.boss.buffs.countFontSize = 11
+		E.db.unitframe.units.boss.buffs.countFontSize = 12
 		E.db.unitframe.units.boss.buffs.xOffset = 3
 		E.db.unitframe.units.boss.buffs.yOffset = 10
 		E.db.unitframe.units.boss.customTexts.UnitPower.size = 13
@@ -1845,7 +1834,7 @@ db.unitframes = function(layout)
 
 		E.db.unitframe.units.raidpet.height = 35
 		E.db.unitframe.units.raidpet.width = 70
-		E.db.unitframe.units.raidpet.debuffs.countFontSize = 11
+		E.db.unitframe.units.raidpet.debuffs.countFontSize = 12
 		E.db.unitframe.units.raidpet.debuffs.sizeOverride = 17
 		E.db.unitframe.units.raidpet.debuffs.yOffset = -17
 		E.db.unitframe.units.raidpet.rdebuffs.fontSize = 12
@@ -1866,8 +1855,6 @@ db.unitframes = function(layout)
 		E.db.unitframe.units.raid40.customTexts.DeadGhostStatus.size = 12
 
 		if layout == 'DPS/Tank' then
-
-			E.db.unitframe.units.party.customTexts.UnitName.text_format = '[name:abbrev:short]'
 			E.db.unitframe.units.party.height = 55
 			E.db.unitframe.units.party.width = 200
 			E.db.unitframe.units.party.power.height = 6
@@ -1927,12 +1914,8 @@ db.unitframes = function(layout)
 			E.db.unitframe.units.raid40.rdebuffs.size = 26
 			E.db.unitframe.units.raid40.rdebuffs.fontSize = 12
 			E.db.unitframe.units.raid40.rdebuffs.yOffset = 2
-
-			E.db.unitframe.units.raidpet.height = 35
-			E.db.unitframe.units.raidpet.width = 47
 		elseif layout == 'Healer-H' or layout == 'Healer-V' then
 			if layout == 'Healer-H' then
-				E.db.unitframe.units.party.customTexts.UnitName.text_format = '[name:abbrev:short]'
 				E.db.unitframe.units.party.height = 55
 				E.db.unitframe.units.party.width = 100
 				E.db.unitframe.units.party.power.height = 6
@@ -1954,7 +1937,6 @@ db.unitframes = function(layout)
 				E.db.unitframe.units.party.petsGroup.width = 100
 				E.db.unitframe.units.party.petsGroup.anchorPoint = 'BOTTOM'
 			elseif layout == 'Healer-V' then
-				E.db.unitframe.units.party.customTexts.UnitName.text_format = '[name:abbrev:short]'
 				E.db.unitframe.units.party.height = 55
 				E.db.unitframe.units.party.width = 200
 				E.db.unitframe.units.party.power.height = 6

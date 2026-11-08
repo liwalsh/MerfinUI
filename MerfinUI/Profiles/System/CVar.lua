@@ -7,11 +7,7 @@ local BASpammerDB = function()
 		return
 	end
 
-	if Private.GetProfileResolution() == 'QUAD_HD' then
-		BASpammer:SetPoint('TOPLEFT', 'UIParent', 'TOPLEFT', 0, -15)
-	elseif Private.GetProfileResolution() == 'FULL_HD' then
-		BASpammer:SetPoint('TOPLEFT', 'UIParent', 'TOPLEFT', 0, -15)
-	end
+	BASpammer:SetPoint('TOPLEFT', 'UIParent', 'TOPLEFT', 0, -15)
 end
 
 local BugSackDB = function()
