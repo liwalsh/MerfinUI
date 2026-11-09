@@ -11,7 +11,9 @@
 -- @class file
 -- @name AceSerializer-3.0
 -- @release $Id: AceSerializer-3.0.lua 1284 2022-09-25 09:15:30Z nevcairiel $
-local MAJOR,MINOR = "AceSerializer-3.0", 5
+-- MINOR lowered below ElvUI's (3) so this embedded copy is skipped when ElvUI is present
+-- (LibStub keeps the higher version) and only registers when no other provider exists.
+local MAJOR,MINOR = "AceSerializer-3.0", 2
 local AceSerializer, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not AceSerializer then return end
