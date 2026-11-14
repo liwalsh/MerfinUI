@@ -156,7 +156,7 @@ function Private.ImportDetails(theme)
 				['locked'] = true,
 				['height'] = 23,
 				},
-				['update_interval'] = 0.3,
+				['update_interval'] = 0.5,
 				['text_offset'] = 2,
 				['font_face'] = Private.GetProfileFont(),
 				['options_frame'] = {},
@@ -1112,7 +1112,7 @@ function Private.ImportDetails(theme)
 				},
 				["font_face"] = Private.GetProfileFont(),
 				["text_offset"] = 2,
-				["update_interval"] = 0.3,
+				["update_interval"] = 0.5,
 				["options_frame"] = {}
 			},
 			["memory_ram"] = 64,

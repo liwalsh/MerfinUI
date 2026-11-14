@@ -328,6 +328,8 @@ db.general = function()
 	E.db.general.queueStatus.xOffset = 0
 	E.db.general.queueStatus.yOffset = 0
 
+	E.db.general.customGlow.style = 'Action Button Glow'
+
 	local profileFont = Private.GetProfileFont()
 	local generalFonts = {
 		cooldown = false,

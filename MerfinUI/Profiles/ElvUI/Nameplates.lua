@@ -61,7 +61,7 @@ function Private.ApplyNameplateStyleClassic()
 		local buffs = E.db.nameplates.units[nameplateType].buffs
 		buffs.enable = true
 		buffs.size = 18
-		buffs.perrow = 7
+		buffs.perrow = 5
 		buffs.numrows = 1
 		buffs.spacing = 1
 		buffs.attachTo = 'FRAME'
@@ -95,7 +95,7 @@ function Private.ApplyNameplateStyleClassic()
 		local debuffs = E.db.nameplates.units[nameplateType].debuffs
 		debuffs.enable = true
 		debuffs.size = 18
-		debuffs.perrow = 7
+		debuffs.perrow = 5
 		debuffs.numrows = 1
 		debuffs.spacing = 0
 		debuffs.attachTo = 'FRAME'
@@ -129,7 +129,7 @@ function Private.ApplyNameplateStyleClassic()
 		local crowdcontrol = E.db.nameplates.units[nameplateType].crowdcontrol
 		crowdcontrol.enable = true
 		crowdcontrol.size = 18
-		crowdcontrol.perrow = 7
+		crowdcontrol.perrow = 5
 		crowdcontrol.numrows = 1
 		crowdcontrol.spacing = 1
 		crowdcontrol.attachTo = 'FRAME'
@@ -232,7 +232,7 @@ function Private.ApplyNameplateStyleModern()
 		local buffs = E.db.nameplates.units[nameplateType].buffs
 		buffs.enable = true
 		buffs.size = 18
-		buffs.perrow = 7
+		buffs.perrow = 5
 		buffs.numrows = 1
 		buffs.spacing = 1
 		buffs.attachTo = 'FRAME'
@@ -266,7 +266,7 @@ function Private.ApplyNameplateStyleModern()
 		local debuffs = E.db.nameplates.units[nameplateType].debuffs
 		debuffs.enable = true
 		debuffs.size = 18
-		debuffs.perrow = 7
+		debuffs.perrow = 5
 		debuffs.numrows = 1
 		debuffs.spacing = 0
 		debuffs.attachTo = 'FRAME'
@@ -300,7 +300,7 @@ function Private.ApplyNameplateStyleModern()
 		local crowdcontrol = E.db.nameplates.units[nameplateType].crowdcontrol
 		crowdcontrol.enable = true
 		crowdcontrol.size = 18
-		crowdcontrol.perrow = 7
+		crowdcontrol.perrow = 5
 		crowdcontrol.numrows = 1
 		crowdcontrol.spacing = 1
 		crowdcontrol.attachTo = 'FRAME'
