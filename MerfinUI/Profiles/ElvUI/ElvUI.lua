@@ -623,6 +623,8 @@ db.actionbars = function(force)
 		return
 	end
 
+	local showMouseover, showGrid = Private.GetActionBarsSettings()
+
 	E.db.cooldown = E.db.cooldown or {}
 	E.db.cooldown.targetaura = E.db.cooldown.targetaura or {}
 	E.db.cooldown.targetaura.enable = false
@@ -652,8 +654,7 @@ db.actionbars = function(force)
 	E.db.actionbar.noRangeColor.b = 0.10196078431373
 	E.db.actionbar.noRangeColor.g = 0.10196078431373
 
-	E.db.actionbar.barPet.showGrid = false
-	E.db.actionbar.barPet.mouseover = true
+	E.db.actionbar.barPet.mouseover = showMouseover
 	E.db.actionbar.barPet.alpha = 0.85
 	E.db.actionbar.barPet.backdrop = false
 	E.db.actionbar.barPet.buttonSpacing = -1
@@ -673,14 +674,14 @@ db.actionbars = function(force)
 	E.db.actionbar.microbar.backdropSpacing = 0
 	E.db.actionbar.microbar.buttonSpacing = 1
 	E.db.actionbar.microbar.enabled = true
-	E.db.actionbar.microbar.mouseover = true
+	E.db.actionbar.microbar.mouseover = showMouseover
 	E.db.actionbar.microbar.useIcons = false
 
 	E.db.actionbar.stanceBar.alpha = 0.85
 	E.db.actionbar.stanceBar.buttonSpacing = -1
 	E.db.actionbar.stanceBar.hotkeyFont = Private.GetProfileFont()
 	E.db.actionbar.stanceBar.hotkeyFontOutline = 'OUTLINE'
-	E.db.actionbar.stanceBar.mouseover = true
+	E.db.actionbar.stanceBar.mouseover = showMouseover
 	E.db.actionbar.stanceBar.style = 'classic'
 
 	E.db.actionbar.totemBar.font = Private.GetProfileFont()
@@ -692,7 +693,6 @@ db.actionbars = function(force)
 	E.db.actionbar.bar5.enabled = true
 	E.db.actionbar.bar6.enabled = false
 
-	local showMouseover, showGrid = Private.GetActionBarsSettings()
 	for i = 1, 10 do
 		E.db.actionbar['bar' .. i].buttons = 12
 		E.db.actionbar['bar' .. i].buttonsPerRow = 12

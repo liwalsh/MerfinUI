@@ -150,10 +150,6 @@ function Private.ActionBarsSettings()
 	E.db.actionbar.stanceBar.mouseover = mouseover
 	E.db.actionbar.totemBar.mouseover = mouseover
 
-	E.db.actionbar.barPet.showGrid = showGrid
-	E.db.actionbar.microbar.showGrid = showGrid
-	E.db.actionbar.stanceBar.showGrid = showGrid
-
 	E:UpdateAll(true)
 end
 

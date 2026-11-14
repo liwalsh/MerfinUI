@@ -165,19 +165,19 @@ Private.InstallerData = {
 		end,
 
 		[6] = function()
-			PluginInstallFrame.SubTitle:SetText(L['Color Theme'])
-			PluginInstallFrame.Desc1:SetText(L['Click on the button to set color theme.'])
-			PluginInstallFrame.Desc3:SetText(L['Importance: |cff4beb2cOptional|r'])
+			PluginInstallFrame.SubTitle:SetText(L['Damage Meter'])
+			PluginInstallFrame.Desc1:SetText(L['Click on the button to adjust settings.'])
+			PluginInstallFrame.Desc3:SetText(L['Importance: |cff4beb2cHigh|r'])
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript('OnClick', function()
-				Private.ChangeTheme('Dark')
+				Private.ImportSkada('Normal')
 			end)
-			PluginInstallFrame.Option1:SetText(L['Dark Theme'])
+			PluginInstallFrame.Option1:SetText(L['Skada'])
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript('OnClick', function()
-				Private.ChangeTheme('Normal')
+				Private.ImportDetails('Normal')
 			end)
-			PluginInstallFrame.Option2:SetText(L['Class Theme'])
+			PluginInstallFrame.Option2:SetText(L['Details'])
 		end,
 
 		[7] = function()
@@ -236,19 +236,19 @@ Private.InstallerData = {
 		end,
 
 		[10] = function()
-			PluginInstallFrame.SubTitle:SetText(L['Damage Meter'])
-			PluginInstallFrame.Desc1:SetText(L['Click on the button to adjust settings.'])
-			PluginInstallFrame.Desc3:SetText(L['Importance: |cff4beb2cHigh|r'])
+			PluginInstallFrame.SubTitle:SetText(L['Color Theme'])
+			PluginInstallFrame.Desc1:SetText(L['Click on the button to set color theme.'])
+			PluginInstallFrame.Desc3:SetText(L['Importance: |cff4beb2cOptional|r'])
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript('OnClick', function()
-				Private.ImportSkada('Normal')
+				Private.ChangeTheme('Dark')
 			end)
-			PluginInstallFrame.Option1:SetText(L['Skada'])
+			PluginInstallFrame.Option1:SetText(L['Dark Theme'])
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript('OnClick', function()
-				Private.ImportDetails('Normal')
+				Private.ChangeTheme('Normal')
 			end)
-			PluginInstallFrame.Option2:SetText(L['Details'])
+			PluginInstallFrame.Option2:SetText(L['Class Theme'])
 		end,
 
 		[11] = function()
@@ -269,11 +269,11 @@ Private.InstallerData = {
 		[3] = L['Chat Settings'],
 		[4] = L['Profiles (ElvUI)'],
 		[5] = L['Raid Frames'],
-		[6] = L['Color Theme'],
+		[6] = L['Damage Meter'],
 		[7] = L['Action Bar Settings'],
 		[8] = L['Combat Text'],
 		[9] = L['Deadly Boss Mods'],
-		[10] = L['Damage Meter'],
+		[10] = L['Color Theme'],
 		[11] = L['Installation Complete'],
 	},
 
