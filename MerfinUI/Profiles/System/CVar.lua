@@ -103,7 +103,7 @@ function Private.Set_CVars()
 		['nameplateStyle'] = 6,
 		['nameplateInfoDisplay'] = 0,
 		['nameplateShowEnemies'] = 1,
-		['nameplateShowFriends'] = 0,
+		['nameplateShowFriends'] = 1,
 		['nameplateShowFriendlyPets'] = 0,
 		['nameplateShowFriendlyTotems'] = 0,
 		['nameplateShowFriendlyGuardians'] = 0,
