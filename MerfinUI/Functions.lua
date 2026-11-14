@@ -264,7 +264,7 @@ function Private.SetDefaults()
 	E.private.MUI.general.profileSettings.media.resolution = Private.Resolution
 	E.private.MUI.general.profileSettings.media.texture = Private.Texture
 	E.private.MUI.general.profileSettings.gameMenu.show = true
-	E.private.MUI.general.profileSettings.actionbars.showMouseover = true
+	E.private.MUI.general.profileSettings.actionbars.showMouseover = false
 	E.private.MUI.general.profileSettings.actionbars.showGrid = false
 	E.private.MUI.general.profileSettings.blacklist.movers = false
 	E.private.MUI.general.profileSettings.blacklist.actionBars = false
