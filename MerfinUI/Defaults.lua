@@ -34,7 +34,7 @@ V.MUI = {
 			},
 			actionbars = {
 				showGrid = false,
-				showMouseover = true,
+				showMouseover = false,
 			},
 			unitframes = {
 				transparentHealth = false,

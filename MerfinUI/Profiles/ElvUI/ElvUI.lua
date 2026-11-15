@@ -67,6 +67,7 @@ db.movers = function(layout, force)
 	E.db.movers.ElvUF_PetCastbarMover = 'BOTTOM,ElvUF_Pet,BOTTOM,0,-21'
 	E.db.movers.ElvUF_TargetCastbarMover = 'BOTTOM,ElvUF_Target,BOTTOM,0,-21'
 	E.db.movers.ElvUF_FocusCastbarMover = 'BOTTOM,ElvUF_Focus,BOTTOM,0,-21'
+	E.db.movers.MinimapButtonGrabberMover = 'TOPRIGHT,Minimap,BOTTOMRIGHT,0,0'
 
 	if Private.GetProfileResolution() == 'QUAD_HD' then
 		E.db.movers.AlertFrameMover = 'TOP,ElvUIParent,TOP,293,-469'
@@ -81,7 +82,6 @@ db.movers = function(layout, force)
 		E.db.movers.HonorBarMover = 'TOPLEFT,ElvUIParent,TOPLEFT,528,-338'
 		E.db.movers.LeftChatMover = 'BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,4,29'
 		E.db.movers.LootFrameMover = 'TOP,UIParent,TOP,0,-218'
-		E.db.movers.MinimapButtonGrabberMover = 'TOPRIGHT,ElvUIParent,TOPRIGHT,-3,-230'
 		E.db.movers.ObjectiveFrameMover = 'TOPRIGHT,ElvUIParent,TOPRIGHT,-100,-360'
 		E.db.movers.RightChatMover = 'BOTTOMRIGHT,ElvUIParent,BOTTOMRIGHT,-4,29'
 		E.db.movers.TotemBarMover = 'BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,4,499'
@@ -169,7 +169,6 @@ db.movers = function(layout, force)
 		E.db.movers.HonorBarMover = 'TOPLEFT,ElvUIParent,TOPLEFT,528,-338'
 		E.db.movers.LeftChatMover = 'BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,4,29'
 		E.db.movers.LootFrameMover = 'TOP,UIParent,TOP,0,-218'
-		E.db.movers.MinimapButtonGrabberMover = 'TOPRIGHT,ElvUIParent,TOPRIGHT,-4,-182'
 		E.db.movers.ObjectiveFrameMover = 'TOPRIGHT,ElvUIParent,TOPRIGHT,-90,-280'
 		E.db.movers.RightChatMover = 'BOTTOMRIGHT,ElvUIParent,BOTTOMRIGHT,-4,29'
 		E.db.movers.TotemBarMover = 'BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,4,499'
@@ -685,6 +684,7 @@ db.actionbars = function(force)
 	E.db.actionbar.stanceBar.style = 'classic'
 
 	E.db.actionbar.totemBar.font = Private.GetProfileFont()
+	E.db.actionbar.totemBar.mouseover = showMouseover
 
 	E.db.actionbar.bar1.enabled = true
 	E.db.actionbar.bar2.enabled = false
