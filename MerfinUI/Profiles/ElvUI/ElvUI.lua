@@ -249,6 +249,8 @@ end
 db.general = function()
 	E.db.general.tagUpdateRate = 0.5
 
+	E.db.general.questRewardSelect = true
+
 	E.db.general.guildBank = E.db.general.guildBank or {}
 	E.db.general.guildBank.countFont = Private.GetProfileFont()
 	E.db.general.guildBank.countFontOutline = 'OUTLINE'
@@ -315,9 +317,6 @@ db.general = function()
 	E.db.general.minimapButtonGrabber.buttonSpacing = -1
 
 	E.db.general.totems = E.db.general.totems or {}
-	E.db.general.totems.enable = false
-	E.db.general.totems.font = Private.GetProfileFont()
-	E.db.general.totems.mouseover = true
 	E.db.general.totems.growthDirection = 'HORIZONTAL'
 	E.db.general.totems.spacing = 1
 	E.db.general.totems.size = 32
@@ -357,11 +356,9 @@ db.general = function()
 		E.db.general.minimap.size = 226
 		E.db.general.minimap.locationFontSize = 14
 		E.db.general.minimap.timeFontSize = 14
-		E.db.general.totems.fontSize = 14
 		E.db.general.guildBank.countFontSize = 14
 		E.db.general.guildBank.itemLevelFontSize = 14
 		E.db.general.queueStatus.fontSize = 14
-		E.db.general.objectiveFrameHeight = 600
 	elseif Private.GetProfileResolution() == 'FULL_HD' then
 		E.db.general.fontSize = 13
 		E.db.general.fonts.errortext.size = 13
@@ -369,11 +366,9 @@ db.general = function()
 		E.db.general.minimap.size = 178
 		E.db.general.minimap.locationFontSize = 13
 		E.db.general.minimap.timeFontSize = 13
-		E.db.general.totems.fontSize = 13
 		E.db.general.guildBank.countFontSize = 13
 		E.db.general.guildBank.itemLevelFontSize = 13
 		E.db.general.queueStatus.fontSize = 13
-		E.db.general.objectiveFrameHeight = 400
 	end
 end
 
@@ -427,8 +422,6 @@ db.bags = function()
 	E.db.bags.countFontOutline = 'OUTLINE'
 	E.db.bags.countxOffset = -2
 	E.db.bags.countyOffset = 3
-	E.db.bags.itemInfoFont = Private.GetProfileFont()
-	E.db.bags.itemInfoFontOutline = 'OUTLINE'
 	E.db.bags.itemLevelFontOutline = 'OUTLINE'
 	E.db.bags.moneyCoins = false
 	E.db.bags.moneyFormat = 'CONDENSED'
@@ -447,7 +440,6 @@ db.bags = function()
 		E.db.bags.bankWidth = 471
 		E.db.bags.bankButtonSpacing = 3
 		E.db.bags.countFontSize = 16
-		E.db.bags.itemInfoFontSize = 16
 		E.db.bags.itemLevelFontSize = 16
 		E.db.bags.cooldown.fonts.fontSize = 14
 	elseif Private.GetProfileResolution() == 'FULL_HD' then
@@ -459,7 +451,6 @@ db.bags = function()
 		E.db.bags.bankWidth = 396
 		E.db.bags.bankButtonSpacing = 3
 		E.db.bags.countFontSize = 14
-		E.db.bags.itemInfoFontSize = 14
 		E.db.bags.itemLevelFontSize = 14
 		E.db.bags.cooldown.fonts.fontSize = 13
 	end
@@ -528,10 +519,10 @@ db.databars = function()
 	E.db.databars.threat.fontOutline = 'OUTLINE'
 
 	if Private.GetProfileResolution() == 'QUAD_HD' then
-		E.db.databars.experience.textSize = 14
+		E.db.databars.experience.fontSize = 14
 		E.db.databars.experience.height = 30
 		E.db.databars.experience.width = 450
-		E.db.databars.petExperience.textSize = 14
+		E.db.databars.petExperience.fontSize = 14
 		E.db.databars.petExperience.height = 25
 		E.db.databars.petExperience.width = 350
 		E.db.databars.reputation.fontSize = 14
@@ -544,10 +535,10 @@ db.databars = function()
 		E.db.databars.threat.height = 10
 		E.db.databars.threat.width = 350
 	elseif Private.GetProfileResolution() == 'FULL_HD' then
-		E.db.databars.experience.textSize = 13
+		E.db.databars.experience.fontSize = 13
 		E.db.databars.experience.height = 27
 		E.db.databars.experience.width = 396
-		E.db.databars.petExperience.textSize = 13
+		E.db.databars.petExperience.fontSize = 13
 		E.db.databars.petExperience.height = 20
 		E.db.databars.petExperience.width = 300
 		E.db.databars.reputation.fontSize = 13
@@ -625,8 +616,7 @@ db.actionbars = function(force)
 	local showMouseover, showGrid = Private.GetActionBarsSettings()
 
 	E.db.cooldown = E.db.cooldown or {}
-	E.db.cooldown.targetaura = E.db.cooldown.targetaura or {}
-	E.db.cooldown.targetaura.enable = false
+	E.db.cooldown.targetAura = false
 
 	E.db.actionbar.cooldown.fonts.enable = true
 	E.db.actionbar.cooldown.fonts.font = Private.GetProfileFont()
@@ -665,7 +655,6 @@ db.actionbars = function(force)
 	E.db.actionbar.barPet.hotkeyTextXOffset = 1
 	E.db.actionbar.barPet.point = 'TOPLEFT'
 
-	E.db.actionbar.extraActionButton.clean = true
 	E.db.actionbar.extraActionButton.hotkeyFont = Private.GetProfileFont()
 	E.db.actionbar.extraActionButton.hotkeyFontOutline = 'OUTLINE'
 
@@ -674,7 +663,6 @@ db.actionbars = function(force)
 	E.db.actionbar.microbar.buttonSpacing = 1
 	E.db.actionbar.microbar.enabled = true
 	E.db.actionbar.microbar.mouseover = showMouseover
-	E.db.actionbar.microbar.useIcons = false
 
 	E.db.actionbar.stanceBar.alpha = 0.85
 	E.db.actionbar.stanceBar.buttonSpacing = -1
@@ -726,7 +714,7 @@ db.actionbars = function(force)
 		end
 
 		E.db.actionbar.vehicleExitButton = E.db.actionbar.vehicleExitButton or {}
-		E.db.actionbar.vehicleExitButton.buttonSize = 36
+		E.db.actionbar.vehicleExitButton.size = 36
 		E.db.actionbar.vehicleExitButton.hotkeyFontSize = 14
 		E.db.actionbar.stanceBar = E.db.actionbar.stanceBar or {}
 		E.db.actionbar.stanceBar.buttonSize = 36
@@ -756,7 +744,7 @@ db.actionbars = function(force)
 		end
 
 		E.db.actionbar.vehicleExitButton = E.db.actionbar.vehicleExitButton or {}
-		E.db.actionbar.vehicleExitButton.buttonSize = 32
+		E.db.actionbar.vehicleExitButton.size = 32
 		E.db.actionbar.vehicleExitButton.hotkeyFontSize = 13
 		E.db.actionbar.stanceBar = E.db.actionbar.stanceBar or {}
 		E.db.actionbar.stanceBar.buttonSize = 32
@@ -962,7 +950,6 @@ db.unitframes = function(layout)
 	E.db.unitframe.units.target.aurabar.enable = false
 	E.db.unitframe.units.target.buffs.attachTo = 'DEBUFFS'
 	E.db.unitframe.units.target.buffs.countFont = Private.GetProfileFont()
-	E.db.unitframe.units.target.buffs.spacing = -1
 	E.db.unitframe.units.target.buffs.yOffset = -1
 	E.db.unitframe.units.target.buffs.priority = 'Blacklist,Personal,Friendly:nonPersonal'
 	E.db.unitframe.units.target.castbar.enable = Private.GetTargetCastBar()
@@ -993,7 +980,6 @@ db.unitframes = function(layout)
 
 	E.db.unitframe.units.target.debuffs.attachTo = 'FRAME'
 	E.db.unitframe.units.target.debuffs.countFont = Private.GetProfileFont()
-	E.db.unitframe.units.target.debuffs.spacing = -1
 	E.db.unitframe.units.target.debuffs.yOffset = -1
 	E.db.unitframe.units.target.debuffs.priority = 'Blacklist,Personal,RaidDebuffs,CCDebuffs,Friendly:Dispellable,Friendly:notCastByUnit,Friendly:CastByNPC'
 	E.db.unitframe.units.target.fader.enable = false
@@ -1080,7 +1066,6 @@ db.unitframes = function(layout)
 	E.db.unitframe.units.focus.buffs.growthX = 'LEFT'
 	E.db.unitframe.units.focus.buffs.maxDuration = 0
 	E.db.unitframe.units.focus.buffs.priority = 'Blacklist,Personal,nonPersonal'
-	E.db.unitframe.units.focus.buffs.spacing = -1
 	E.db.unitframe.units.focus.buffs.yOffset = -2
 
 	E.db.unitframe.units.focus.debuffs.anchorPoint = 'LEFT'
@@ -1088,7 +1073,6 @@ db.unitframes = function(layout)
 	E.db.unitframe.units.focus.debuffs.enable = false
 	E.db.unitframe.units.focus.debuffs.perrow = 6
 	E.db.unitframe.units.focus.debuffs.priority = 'Blacklist,Personal,RaidDebuffs,CCDebuffs,Friendly:Dispellable'
-	E.db.unitframe.units.focus.debuffs.spacing = -1
 	E.db.unitframe.units.focus.debuffs.xOffset = -7
 	E.db.unitframe.units.focus.debuffs.yOffset = -2
 
@@ -1147,7 +1131,6 @@ db.unitframes = function(layout)
 	E.db.unitframe.units.arena.customTexts.UnitName.text_format = '[name:abbrev:short]'
 
 	E.db.unitframe.units.arena.debuffs.countFont = Private.GetProfileFont()
-	E.db.unitframe.units.arena.debuffs.desaturate = true
 	E.db.unitframe.units.arena.debuffs.enable = false
 	E.db.unitframe.units.arena.debuffs.maxDuration = 0
 	E.db.unitframe.units.arena.debuffs.priority = 'Blacklist,Boss,Personal,RaidDebuffs,CastByUnit,Whitelist'
@@ -1221,7 +1204,6 @@ db.unitframes = function(layout)
 	E.db.unitframe.units.party.buffs.attachTo = 'HEALTH'
 	E.db.unitframe.units.party.buffs.countFont = Private.GetProfileFont()
 	E.db.unitframe.units.party.buffs.perrow = 3
-	E.db.unitframe.units.party.buffs.spacing = -1
 	E.db.unitframe.units.party.colorOverride = 'FORCE_ON'
 	E.db.unitframe.units.party.customTexts.DeadGhostStatus.attachTextTo = 'Health'
 	E.db.unitframe.units.party.customTexts.DeadGhostStatus.enable = true
@@ -1298,8 +1280,7 @@ db.unitframes = function(layout)
 	E.db.unitframe.units.raid.power.height = 4
 	E.db.unitframe.units.raid.power.position = 'RIGHT'
 	E.db.unitframe.units.raid.power.yOffset = 0
-	E.db.unitframe.units.raid.raidRoleIcons.enable = false
-	E.db.unitframe.units.raid.raidRoleIcons.yOffset = 3
+	E.db.unitframe.units.raid.raidRoleIcons.enable = true
 	E.db.unitframe.units.raid.readycheckIcon.attachTo = 'CENTER'
 	E.db.unitframe.units.raid.readycheckIcon.yOffset = 13
 
@@ -1345,8 +1326,7 @@ db.unitframes = function(layout)
 	E.db.unitframe.units.raid40.power.height = 4
 	E.db.unitframe.units.raid40.power.position = 'RIGHT'
 	E.db.unitframe.units.raid40.power.yOffset = 0
-	E.db.unitframe.units.raid40.raidRoleIcons.enable = false
-	E.db.unitframe.units.raid40.raidRoleIcons.yOffset = 3
+	E.db.unitframe.units.raid40.raidRoleIcons.enable = true
 	E.db.unitframe.units.raid40.readycheckIcon.attachTo = 'CENTER'
 	E.db.unitframe.units.raid40.readycheckIcon.yOffset = 13
 	E.db.unitframe.units.raid40.verticalSpacing = -1
@@ -1548,9 +1528,9 @@ db.unitframes = function(layout)
 		E.db.unitframe.units.tank.width = 100
 		E.db.unitframe.units.tank.debuffs.countFontSize = 14
 
-		E.db.unitframe.units.party.buffIndicator.countFontSize = 14
-		E.db.unitframe.units.raid.buffIndicator.countFontSize = 14
-		E.db.unitframe.units.raid40.buffIndicator.countFontSize = 14
+		E.db.unitframe.units.party.buffIndicator.fontSize = 14
+		E.db.unitframe.units.raid.buffIndicator.fontSize = 14
+		E.db.unitframe.units.raid40.buffIndicator.fontSize = 14
 
 		E.db.unitframe.units.raid.customTexts.UnitName.size = 14
 		E.db.unitframe.units.raid.customTexts.DeadGhostStatus.size = 13
@@ -1846,9 +1826,9 @@ db.unitframes = function(layout)
 		E.db.unitframe.units.tank.width = 100
 		E.db.unitframe.units.tank.debuffs.countFontSize = 13
 
-		E.db.unitframe.units.party.buffIndicator.countFontSize = 13
-		E.db.unitframe.units.raid.buffIndicator.countFontSize = 13
-		E.db.unitframe.units.raid40.buffIndicator.countFontSize = 13
+		E.db.unitframe.units.party.buffIndicator.fontSize = 13
+		E.db.unitframe.units.raid.buffIndicator.fontSize = 13
+		E.db.unitframe.units.raid40.buffIndicator.fontSize = 13
 
 		E.db.unitframe.units.raid.customTexts.UnitName.size = 13
 		E.db.unitframe.units.raid.customTexts.DeadGhostStatus.size = 12

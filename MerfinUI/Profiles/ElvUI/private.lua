@@ -11,9 +11,7 @@ function Private.PrivateDB()
 	E.private.general.namefont = Private.Font
 	E.private.general.nameplateFont = Private.Font
 	E.private.general.normTex = Private.GetProfileTexture()
-	E.private.general.totemBar = false
 	E.private.general.totemTracker = false
-	E.private.general.selectQuestReward = true
 	E.private.general.replaceNameplateFont = false
 
 	if Private.GetProfileResolution() == 'QUAD_HD' then
