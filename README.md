@@ -7,6 +7,6 @@
 
 Аддоны для работы MerfinUI<br/><br/>
 [ElvUI](https://github.com/Accidev-Addons/ElvUI-for-Sirus)<br/>
-[WeakAuras](https://github.com/fxpw/WeakAuras-Sirus.su)<br/>
 [ElvUI_AddOnSkins](https://github.com/fxpw/ElvUI_AddOnSkins)<br/>
-[Details](https://github.com/fxpw/Details_Sirus)<br/>
+[WeakAuras](https://github.com/fxpw/WeakAuras-Sirus.su)<br/>
+Skada \ [Details](https://github.com/Accidev-Addons/Details_Sirus)<br/>
