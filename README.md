@@ -9,4 +9,4 @@
 [ElvUI](https://github.com/Accidev-Addons/ElvUI-for-Sirus)<br/>
 [ElvUI_AddOnSkins](https://github.com/fxpw/ElvUI_AddOnSkins)<br/>
 [WeakAuras](https://github.com/fxpw/WeakAuras-Sirus.su)<br/>
-Skada \ [Details](https://github.com/Accidev-Addons/Details_Sirus)<br/>
+[Details](https://github.com/Accidev-Addons/Details_Sirus)<br/>
