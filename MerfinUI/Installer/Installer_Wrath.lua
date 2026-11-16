@@ -170,14 +170,9 @@ Private.InstallerData = {
 			PluginInstallFrame.Desc3:SetText(L['Importance: |cff4beb2cHigh|r'])
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript('OnClick', function()
-				Private.ImportSkada('Normal')
-			end)
-			PluginInstallFrame.Option1:SetText(L['Skada'])
-			PluginInstallFrame.Option2:Show()
-			PluginInstallFrame.Option2:SetScript('OnClick', function()
 				Private.ImportDetails('Normal')
 			end)
-			PluginInstallFrame.Option2:SetText(L['Details'])
+			PluginInstallFrame.Option1:SetText(L['Details'])
 		end,
 
 		[7] = function()

@@ -119,7 +119,6 @@ L['Class Auras, General Auras, Raid Packs, and more.'] = 'Классовые и 
 L['Easy Delete'] = 'Быстрое удаление'
 L['Automatically fill out the confirmation text to delete items.'] = 'Автоматически заполнять подтверждающий текст для удаления предметов.'
 L['Texture that core of the UI will use.'] = 'Текстура, которую будет использовать ядро ​​UI.'
-L['Skada'] = 'Skada'
 L['Damage Meter'] = 'Счетчик урона'
 L['|cffffff00MerfinUI:|r profile version was changed to recent v%s'] = '|cffffff00MerfinUI:|r версия профиля изменена на актуальную v%s'
 L['Nameplates'] = 'Индикаторы здоровья'

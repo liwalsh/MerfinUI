@@ -123,7 +123,6 @@ L['Class Auras, General Auras, Raid Packs, and more.'] = 'Class Auras, General A
 L['Easy Delete'] = 'Easy Delete'
 L['Automatically fill out the confirmation text to delete items.'] = 'Automatically fill out the confirmation text to delete items.'
 L['Texture that core of the UI will use.'] = 'Texture that core of the UI will use.'
-L['Skada'] = 'Skada'
 L['Damage Meter'] = 'Damage Meter'
 L['|cffffff00MerfinUI:|r profile version was changed to recent v%s'] = '|cffffff00MerfinUI:|r profile version was changed to recent v%s'
 L['Nameplates'] = 'Nameplates'

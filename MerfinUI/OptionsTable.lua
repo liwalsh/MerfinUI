@@ -425,10 +425,7 @@ function Private.OptionsTable()
 		'medium'
 	)
 	profileImports.damageMeter.args.spacer1 = ACH:Spacer(2, 'full')
-	profileImports.damageMeter.args.skada = ACH:Execute('Skada', nil, 3, function()
-		Private.ImportSkada('Dark')
-	end)
-	profileImports.damageMeter.args.detailsButton = ACH:Execute(L['Details'], nil, 4, function()
+	profileImports.damageMeter.args.detailsButton = ACH:Execute(L['Details'], nil, 3, function()
 		Private.ImportDetails('DARK')
 	end)
 

@@ -13,15 +13,10 @@ function Private.LoadPlugins()
 		E.db.addOnSkins.dbmTemplate = 'Transparent'
 		E.db.addOnSkins.dbmFontOutline = 'NONE'
 		E.db.addOnSkins.dbmFont = Private.GetProfileFont()
-		E.db.addOnSkins.skadaTitleTemplate = 'Transparent'
-		E.db.addOnSkins.skadaTemplate = 'Transparent'
 		E.db.addOnSkins.omenTemplateGloss = true
 		E.db.addOnSkins.embed.rightWindow = 'Omen'
-		E.db.addOnSkins.embed.leftWindow = 'Skada'
-		E.db.addOnSkins.skadaTemplateGloss = true
 		E.db.addOnSkins.dbmBarHeight = 27
 		E.db.addOnSkins.dbmFontSize = 12
-		E.db.addOnSkins.embed.leftWindowWidth = 190
 	end
 
 	local chat_error_msg = false

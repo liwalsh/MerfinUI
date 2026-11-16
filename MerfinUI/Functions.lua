@@ -202,9 +202,6 @@ function Private.ChangeTheme(theme)
 		E.db.unitframe.units['raid'].customTexts.UnitName.text_format = '[namecolor][name:abbrev:short]'
 		E.db.unitframe.units['raid40'].customTexts.UnitName.text_format = '[namecolor][name:abbrev:short]'
 
-		if E:IsAddOnEnabled('Skada') then
-			Private.ImportSkada('Dark')
-		end
 		if E:IsAddOnEnabled('Details') then
 			Private.ImportDetails('Dark')
 		end
@@ -239,9 +236,6 @@ function Private.ChangeTheme(theme)
 		E.db.unitframe.units['raid'].customTexts.UnitName.text_format = '[name:abbrev:short]'
 		E.db.unitframe.units['raid40'].customTexts.UnitName.text_format = '[name:abbrev:short]'
 
-		if E:IsAddOnEnabled('Skada') then
-			Private.ImportSkada('Normal')
-		end
 		if E:IsAddOnEnabled('Details') then
 			Private.ImportDetails('NORMAL')
 		end
