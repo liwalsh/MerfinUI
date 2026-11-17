@@ -56,7 +56,7 @@ function Private.Import_xCT(layout)
 				['showHonorGains'] = false,
 			},
 			['outgoing'] = {
-				['enabledFrame'] = false,
+				['enabledFrame'] = true,
 				['insertText'] = 'top',
 				['font'] = mainFont,
 				['enableOutHeal'] = false,
