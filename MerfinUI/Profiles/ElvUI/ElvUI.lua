@@ -294,6 +294,9 @@ db.general = function()
 
 	E.db.general.lootRoll.nameFont = Private.GetProfileFont()
 	E.db.general.lootRoll.statusBarTexture = Private.GetProfileTexture()
+	E.db.general.lootRoll.style = 'fullbar'
+	E.db.general.lootRoll.height = 28
+	E.db.general.lootRoll.width = 355
 
 	E.db.general.minimap.clusterBackdrop = false
 	E.db.general.minimap.locationFont = Private.GetProfileFont()
